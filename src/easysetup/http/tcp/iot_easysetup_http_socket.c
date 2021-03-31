@@ -21,6 +21,10 @@
 
 #define HTTP_PORT 8888
 
+#if !defined(TCP_KEEPIDLE) && defined(TCP_KEEPALIVE)
+#define TCP_KEEPIDLE TCP_KEEPALIVE
+#endif
+
 bool is_http_conn_handle_initialized(HTTP_CONN_H *handle)
 {
 	if ((handle == NULL) || (handle->accept_sock == CONN_HANDLE_UNINITIALIZED) ||

@@ -5,8 +5,8 @@ include $(TOPDIR)/make/common.mk
 
 STDK_CFLAGS := $(foreach STDK_CONFIG, $(STDK_CONFIGS), -DCONFIG_$(STDK_CONFIG))
 
-BSP_DIR = src/port/bsp/posix
-OS_DIR = src/port/os/posix
+BSP_DIR = src/port/bsp/darwin
+OS_DIR = src/port/os/darwin
 ifneq ($(findstring STDK_IOT_CORE_NET_MBEDTLS, $(STDK_CONFIGS)),)
 NET_DIR = src/port/net/mbedtls
 else
@@ -22,7 +22,7 @@ OUTPUT_DIR = $(TOPDIR)/output
 CBOR_DIR = src/deps/cbor/tinycbor/src
 
 
-CFLAGS	:= -std=c99 -D_GNU_SOURCE
+CFLAGS	:= -std=c11 -D_GNU_SOURCE
 CFLAGS	+= $(STDK_CFLAGS)
 
 
